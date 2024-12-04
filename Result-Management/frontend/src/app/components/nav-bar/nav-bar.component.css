@@ -1,0 +1,13 @@
+.navbar {
+    padding: 10px;
+  }
+  
+  .navbar-brand {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    left: 50%;
+    transform: translateX(230%);
+  }
+
+  

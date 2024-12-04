@@ -1,0 +1,15 @@
+<!-- result.component.html -->
+<app-nav-bar></app-nav-bar>
+<div class="container text-center mt-5">
+    <h2>Result</h2>
+    <div *ngIf="result; else noResult">
+      <p>Name: {{ result.name }}</p>
+      <p>Score: {{ result.score }}</p>
+    </div>
+    <ng-template #noResult>
+      <p>No result available.</p>
+    </ng-template>
+
+    <button class="btn btn-secondary mt-3" (click)="goBack()">Back</button>
+  </div>
+  

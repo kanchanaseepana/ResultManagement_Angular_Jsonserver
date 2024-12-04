@@ -1,0 +1,75 @@
+<app-nav-bar></app-nav-bar>
+<div class="container mt-5">
+    <h2>Add New Student</h2>
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+    <button class="btn btn-secondary mt-3" (click)="goBack()">Back</button>
+    <form #studentForm="ngForm" (ngSubmit)="addResult()">
+      <div class="form-group">
+        <label>Roll Number</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="newResult.rollNumber"
+          name="rollNumber"
+          required
+          #rollNumber="ngModel"
+        />
+        <div *ngIf="rollNumber.invalid && rollNumber.touched" class="text-danger">
+          Roll Number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="newResult.name"
+          name="name"
+          required
+          #name="ngModel"
+          (blur)="validateName()"
+        />
+        <div *ngIf="nameError" class="text-danger">
+          Name is required and cannot be blank.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="newResult.dob"
+          name="dob"
+          required
+          #dob="ngModel"
+        />
+        <div *ngIf="dob.invalid && dob.touched" class="text-danger">
+          Date of Birth is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Score</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="newResult.score"
+          name="score"
+          required
+          min="0"
+          max="100"
+          #score="ngModel"
+        />
+        <div *ngIf="score.invalid && score.touched" class="text-danger">
+          Score is required and must be between 0 and 100.
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-3"
+        [disabled]="!studentForm.valid"
+      >
+        Add Student
+      </button>
+    </form>
+  </div>
+  

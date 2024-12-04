@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<div class="container mt-5">
+    <h2>Teacher Dashboard</h2>
+  
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+    <button class="btn btn-primary mb-3" (click)="navigateToAddStudent()">Add New Student</button>
+  
+    
+    <!-- View/Edit/Delete Records -->
+    <div class="card">
+      <div class="card-header">Results</div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Roll Number</th>
+              <th>Name</th>
+              <th>Date of Birth</th>
+              <th>Score</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let result of results">
+              <ng-container *ngIf="editingResult?.id !== result.id; else editMode">
+                <td>{{ result.rollNumber }}</td>
+                <td>{{ result.name }}</td>
+                <td>{{ result.dob }}</td>
+                <td>{{ result.score }}</td>
+                <td>
+                  <button class="btn btn-warning btn-sm me-2" (click)="startEditing(result)"> <mat-icon>edit</mat-icon></button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteResult(result.id)"><mat-icon>close</mat-icon></button>
+                </td>
+              </ng-container>
+              <ng-template #editMode>
+                <td><input type="text" [(ngModel)]="editingResult.rollNumber" class="form-control" /></td>
+                <td><input type="text" [(ngModel)]="editingResult.name" class="form-control" /></td>
+                <td><input type="date" [(ngModel)]="editingResult.dob" class="form-control" /></td>
+                <td><input type="number" [(ngModel)]="editingResult.score" class="form-control" /></td>
+                <td>
+                  <button class="btn btn-success btn-sm me-2" (click)="saveEdit()"><mat-icon>save</mat-icon></button>
+                  <button class="btn btn-secondary btn-sm" (click)="cancelEdit()"><mat-icon>close</mat-icon></button>
+                </td>
+              </ng-template>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

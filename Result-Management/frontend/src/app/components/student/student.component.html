@@ -1,0 +1,53 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+    <h2>Student Dashboard</h2>
+    <button class="btn btn-secondary mt-3" (click)="goBack()">Back</button>
+    <form (submit)="fetchResult()" #form="ngForm">
+      <div class="form-group">
+        <label>Roll Number:</label>
+        <input 
+          type="text" 
+          class="form-control" 
+          [(ngModel)]="rollNumber" 
+          name="rollNumber" 
+          required 
+          minlength="1"
+          [ngClass]="{'is-invalid': rollNumber && rollNumber.trim() === '' && form.submitted}" 
+        />
+        <div *ngIf="rollNumber && rollNumber.trim() === '' && form.submitted" class="invalid-feedback">
+          Roll number cannot be empty or just spaces.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth:</label>
+        <input 
+          type="date" 
+          class="form-control" 
+          [(ngModel)]="dob" 
+          name="dob" 
+          required 
+          [ngClass]="{'is-invalid': dob.trim() === '' && form.submitted}" 
+        />
+        <div *ngIf="dob && dob.trim() === '' && form.submitted" class="invalid-feedback">
+          Date of birth is required.
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn btn-primary mt-3" 
+        [disabled]="!form.valid || !rollNumber.trim() || !dob.trim()"
+      >
+        View Result
+      </button>
+
+      <button 
+        type="button" 
+        class="btn btn-secondary mt-3 ml-2" 
+        (click)="clearForm()">
+        Clear
+      </button>
+    </form>
+    <div *ngIf="error" class="text-danger mt-3">{{ error }}</div>
+</div>

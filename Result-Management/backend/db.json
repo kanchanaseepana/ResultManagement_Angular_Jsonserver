@@ -1,0 +1,51 @@
+{
+  "results": [
+    {
+      "id": "1",
+      "rollNumber": "101",
+      "name": "John Doe",
+      "dob": "2000-01-01",
+      "score": 85
+    },
+    {
+      "id": "2",
+      "rollNumber": "102",
+      "name": "Jane Smith",
+      "dob": "2001-02-02",
+      "score": 90
+    },
+    {
+      "id": "1652",
+      "rollNumber": "101",
+      "name": "kanchu",
+      "dob": "2000-01-01",
+      "score": 23
+    },
+    {
+      "id": "35ee",
+      "rollNumber": "1",
+      "name": "kanchana seepana",
+      "dob": "2001-02-01",
+      "score": 1
+    },
+    {
+      "id": "a7f6",
+      "rollNumber": "102",
+      "name": "tej brohh",
+      "dob": "2001-01-01",
+      "score": 45
+    }
+  ],
+  "teachers": [
+    {
+      "id": "1",
+      "username": "teacher1",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "username": "teacher2",
+      "password": "password456"
+    }
+  ]
+}
